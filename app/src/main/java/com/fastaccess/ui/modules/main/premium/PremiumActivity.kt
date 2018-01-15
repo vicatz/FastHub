@@ -73,6 +73,7 @@ class PremiumActivity : BaseActivity<PremiumMvp.View, PremiumPresenter>(), Premi
     }
 
     @OnClick(R.id.unlock) fun onUnlock() {
+        successResult()
         if (!isGoogleSupported()) return
         if (BuildConfig.DEBUG) {
             PrefGetter.setProItems()
@@ -80,11 +81,11 @@ class PremiumActivity : BaseActivity<PremiumMvp.View, PremiumPresenter>(), Premi
             onSuccessfullyActivated()
             return
         }
-        val isEmpty = editText.text.isNullOrBlank()
+      /*  val isEmpty = editText.text.isNullOrBlank()
         editText.error = if (isEmpty) getString(R.string.required_field) else null
         if (!isEmpty) {
             presenter.onCheckPromoCode(editText.text.toString())
-        }
+        } */
     }
 
     @OnEditorAction(R.id.editText) fun onEditorAction(): Boolean {
